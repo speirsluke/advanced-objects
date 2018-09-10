@@ -57,6 +57,8 @@ const convertBookArrayToMap = books => {
   //     year: 1884
   //   }
   // }
+
+  // hint: create a new output object and assign new properties with id as key and the book as value
 }
 
 const dogCount = dogs => {
@@ -69,6 +71,9 @@ const dogCount = dogs => {
 
   // return an object which has locations as keys and
   // the number of dogs at that location as values
+
+  // hint: create a new output object and loop over dogs array.
+  // For each dog increment the value corresponding to the location key.
 }
 
 const dogNames = dogs => {
