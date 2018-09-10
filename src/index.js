@@ -110,6 +110,8 @@ const averageFruitPerBox = boxes => {
   // fruit per box for that fruit type as value
 }
 
+/* STRETCH GOALS */
+
 const footballResultsWithObject = (teams, results) => {
   // function receives two parameters:
   // 1. an object where which contains football team ids as keys and team names as values
@@ -129,8 +131,6 @@ const footballResultsWithArray = (teams, results) => {
 
   // return an object has team names as keys and their number of points as values
 }
-
-/* STRETCH GOALS */
 
 const stockMarket = prices => {
   // function receives an array of share prices produced during the day
@@ -162,6 +162,7 @@ const calculateOrderPriceWithType = (menu, order, type) => {
 
   // calculate a total cost for each order using quantities from `order` and prices from `menu`
   // add 10% service charge for `eatIn` orders and a fixed delivery charge of 5 to `takeAway` orders
+
   // try to implement the service charge and delivery charge calculation without using if/else
   // hint: you can create an object with methods that calculate the charges and call the relevant one using
   // the order type provided

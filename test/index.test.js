@@ -268,24 +268,6 @@ test('averageFruitPerBox', () => {
   });
 });
 
-test('calculate order price', () => {
-  const menu = {
-    hotdog: 8,
-    burger: 10,
-    fries: 3,
-    cheeseCake: 5,
-    macNCheese: 4
-  };
-
-  const order = {
-    burger: 2,
-    fries: 3
-  };
-
-  const output = calculateOrderPrice(menu, order);
-  expect(output).toEqual(29);
-});
-
 test('Football results with object', () => {
   const teams = {
     1: 'Liverpool',
@@ -409,6 +391,24 @@ test('Stock market', () => {
   });
 });
 
+test('calculate order price', () => {
+  const menu = {
+    hotdog: 8,
+    burger: 10,
+    fries: 3,
+    cheeseCake: 5,
+    macNCheese: 4
+  };
+
+  const order = {
+    burger: 2,
+    fries: 3
+  };
+
+  const output = calculateOrderPrice(menu, order);
+  expect(output).toEqual(29);
+});
+
 test('calculate order price with type - eat in', () => {
   const menu = {
     hotdog: 8,
@@ -442,5 +442,5 @@ test('calculate order price with type - take away', () => {
   };
 
   const output = calculateOrderPriceWithType(menu, order, 'takeAway');
-  expect(output).toEqual(43);
+  expect(output).toEqual(45);
 });
