@@ -3,6 +3,7 @@ const teaBagsLeft = teaBags => {
   // and values are the number of teaBags we have of that type.
 
   // return the total number teabags we have left
+  return Object.values(teaBags).reduce((a,b) => a+b);
 }
 
 const shoppingList = (previousShoppingList, newShoppingList) => {
@@ -12,6 +13,8 @@ const shoppingList = (previousShoppingList, newShoppingList) => {
   // return a new shopping list which has properties from both shopping lists
   // properties from newShoppingList should overwrite properties from previousShoppingList
   // previousShoppingList and newShoppingList should not be mutated
+
+return Object.assign({}, previousShoppingList, newShoppingList);
 }
 
 const footballResults = (results) => {
@@ -32,6 +35,13 @@ const footballResults = (results) => {
   //   'tottenham has 3 points',
   //   'chelsea has 2 points'
   // ]
+
+  const keys = Object.keys(results);
+
+  return keys.map(function(key) {
+    return `${key} has ${results[key]} points`;
+  });
+
 }
 
 const convertBookArrayToMap = books => {
@@ -59,6 +69,15 @@ const convertBookArrayToMap = books => {
   // }
 
   // hint: create a new output object and assign new properties with id as key and the book as value
+let bookMap = {}; 
+
+const bookIds = books.map(function(book){ 
+  bookMap[book.id] = book;
+})
+
+
+
+  return bookMap; 
 }
 
 const dogCount = dogs => {
@@ -74,7 +93,19 @@ const dogCount = dogs => {
 
   // hint: create a new output object and loop over dogs array.
   // For each dog increment the value corresponding to the location key.
+  const dogLocations = {};
+  const locations = dogs.map(function(dog) {
+    dogLocations[dog.location] = 0
+    return dog.location; 
+  })
+console.log(locations)
+
+locations.map(function(location){
+  dogLocations[location] += 1;
+})
+return dogLocations; 
 }
+
 
 const dogNames = dogs => {
   // function receives an array of dogs, each dog has a name and location
@@ -83,7 +114,19 @@ const dogNames = dogs => {
   //     name: 'ruby',
   //     location: 'liverpool'
   // }
+  const dogLocations = {};
+  const dogNames = dogs.map(function(dog) {
+    dogLocations[dog.location] = []; 
+  return dog.name;
+  })
+dogs.map(function(dog){
+dogLocations[location] = dogLocations[location].push(dog.name)
+})
 
+
+  
+return dogLocations; 
+  
   // return an object which has locations as keys and
   // as values an array which contains the names of the dogs
   // at that location

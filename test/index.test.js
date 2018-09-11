@@ -171,7 +171,7 @@ test('dog count', () => {
   })
 });
 
-test('dog names', () => {
+test.only('dog names', () => {
   const dogs = [
     {
         name: 'ruby',
