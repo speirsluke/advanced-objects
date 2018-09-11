@@ -171,7 +171,7 @@ test('dog count', () => {
   })
 });
 
-test.only('dog names', () => {
+test('dog names', () => {
   const dogs = [
     {
         name: 'ruby',
@@ -296,7 +296,7 @@ test('Football results with object', () => {
   })
 });
 
-test('Football results with array', () => {
+test.only('Football results with array', () => {
   const teams = [{
     id: 1,
     name: 'Liverpool'

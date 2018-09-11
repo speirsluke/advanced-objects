@@ -114,23 +114,27 @@ const dogNames = dogs => {
   //     name: 'ruby',
   //     location: 'liverpool'
   // }
-  const dogLocations = {};
-  const dogNames = dogs.map(function(dog) {
-    dogLocations[dog.location] = []; 
-  return dog.name;
-  })
-dogs.map(function(dog){
-dogLocations[location] = dogLocations[location].push(dog.name)
-})
-
-
-  
-return dogLocations; 
-  
-  // return an object which has locations as keys and
+    // return an object which has locations as keys and
   // as values an array which contains the names of the dogs
   // at that location
+  const dogLocations = {};
+  dogs.forEach(function(dog) {
+    if (!dogLocations[dog.location]) {
+      console.log(dog.location);
+      dogLocations[dog.location] = [dog.name];
+      //dogLocations[dog.location].push(dog.name);    
+    }
+    else {
+       dogLocations[dog.location].push(dog.name);
+    }
+  })
+
+return dogLocations; 
+  
+
 }
+
+
 
 const fruitMarket = boxes => {
   // function receives an array of fruit box objects.
@@ -143,6 +147,16 @@ const fruitMarket = boxes => {
 
   // return an object that has contents as keys and the total for that
   // fruit in all boxes as values.
+const totals = {};
+  boxes.forEach(function(fruit){
+  if (!totals[fruit.contents]) {
+    totals[fruit.contents] = fruit.number;
+  } else {
+    totals[fruit.contents] += fruit.number;
+  }
+  })
+
+  return totals;
 }
 
 const averageFruitPerBox = boxes => {
@@ -156,18 +170,52 @@ const averageFruitPerBox = boxes => {
 
   // return an object that has contents as keys and the average number of
   // fruit per box for that fruit type as value
+
+  const totals = {};
+  boxes.forEach(function(fruit){
+  if (!totals[fruit.contents]) {
+    totals[fruit.contents] = [];
+    totals[fruit.contents].push(fruit.number);
+  } else {
+    totals[fruit.contents].push(fruit.number);
+  }
+  });
+  
+  const fruitArr = Object.keys(totals); 
+  
+  const averages = {};
+  fruitArr.map(function(fruit) {
+    averages[fruit] = totals[fruit].reduce(function(a,b) {
+   return a + b;                             
+                   }, 0) / totals[fruit].length
+  });
+
+   return averages;
+
+
+
+
 }
+
+
 
 /* STRETCH GOALS */
 
 const footballResultsWithObject = (teams, results) => {
   // function receives two parameters:
-  // 1. an object where which contains football team ids as keys and team names as values
+  // 1. an object which contains football team ids as keys and team names as values
   // 2. object which contains football team ids as keys and how many points the team has as values
 
   // take a look at the test for sample data
 
   // return an object has team names as keys and their number of points as values
+const ids = Object.keys(teams); 
+const league = {}; 
+
+ids.forEach(function(id){
+  league[teams[id]] = results[id]; 
+})
+return league; 
 }
 
 const footballResultsWithArray = (teams, results) => {
@@ -178,6 +226,11 @@ const footballResultsWithArray = (teams, results) => {
   // take a look at the test for sample data
 
   // return an object has team names as keys and their number of points as values
+  const league = {};
+  const ids = teams.map(function(team){
+  league[team.name] = results[team.id];
+  })
+  return league;
 }
 
 const stockMarket = prices => {
